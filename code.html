@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Artificially | Autonomous RevOps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200,0&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#000000",
+                        foreground: "#ffffff",
+                        card: "#0d0d0d",
+                        "card-foreground": "#ffffff",
+                        primary: "#ffffff",
+                        "primary-foreground": "#000000",
+                        secondary: "#1f1f1f",
+                        "secondary-foreground": "#d9d9d9",
+                        muted: "#1a1a1a",
+                        "muted-foreground": "#a6a6a6",
+                        accent: "#61847e",
+                        border: "#333333",
+                        input: "#2e2e2e"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        serif: ["Instrument Serif", "serif"]
+                    },
+                    letterSpacing: {
+                        tighter: "-0.04em",
+                        tight: "-0.02em",
+                        widest: "0.1em"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Premium Liquid Glass Effect */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.02);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            border-radius: 0.5rem; /* 8px */
+        }
+        
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 20%,
+                rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.05) 80%, rgba(255,255,255,0.2) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Magnetic Button Glow */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-glow:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        .btn-glow:active {
+            transform: scale(0.98);
+        }
+
+        /* Smooth scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground selection:bg-accent selection:text-white">
+
+    <!-- Navbar removed as requested -->
+
+    <main>
+        <!-- Top Wrapper for Hero + Features -->
+        <div class="relative w-full">
+            <div class="absolute top-0 left-0 w-full h-[150vh] z-0 overflow-hidden pointer-events-none">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover object-top opacity-90" style="-webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%); mask-image: linear-gradient(to bottom, black 60%, transparent 100%);">
+                    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260325_120549_0cd82c36-56b3-4dd9-b190-069cfc3a623f.mp4" type="video/mp4"/>
+                </video>
+            </div>
+
+            <!-- Hero Section -->
+            <section class="relative z-10 min-h-[100vh] flex flex-col justify-center items-center pt-24 pb-12">
+
+            <div class="relative z-10 w-full max-w-5xl mx-auto px-6 text-center mt-12">
+                <div class="reveal flex justify-center mb-8">
+                    <div class="inline-flex items-center gap-3 liquid-glass pr-4 pl-1.5 py-1.5 rounded-full text-xs font-medium text-muted-foreground border border-white/10">
+                        <span class="bg-white text-black px-2.5 py-0.5 rounded-full font-semibold text-[10px] uppercase tracking-wider">New</span>
+                        Plugging revenue leaks for 15+ agencies
+                    </div>
+                </div>
+                
+                <h1 class="reveal delay-100 text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tighter leading-[0.95] mb-8 pb-4 text-gradient">
+                    Stop Guessing Your Margin.<br/>Plug the <span class="font-serif italic font-normal text-white" style="-webkit-text-fill-color: white;">Leak</span>.
+                </h1>
+                
+                <p class="reveal delay-200 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 font-medium">
+                    Autonomous RevOps infrastructure. We sync Stripe, Toggl, and Meta to predict client churn and track real-time profitability.
+                </p>
+
+                <div class="reveal delay-300 flex justify-center">
+                    <div class="liquid-glass p-1.5 rounded-full inline-flex flex-col sm:flex-row items-center w-full max-w-xl border border-white/10">
+                        <span class="material-symbols-outlined text-muted-foreground text-sm ml-4 hidden sm:block flex-shrink-0">mail</span>
+                        <input type="email" placeholder="Enter your Email" class="bg-transparent border-none text-sm px-4 py-3 w-full flex-1 focus:outline-none focus:ring-0 text-white placeholder-muted-foreground" />
+                        <button class="btn-glow w-full sm:w-auto flex-shrink-0 bg-white text-black font-semibold text-sm px-6 py-2.5 rounded-full whitespace-nowrap mt-2 sm:mt-0">
+                            Request Audit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agencies are Bleeding Section -->
+        <section class="relative z-10 py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24">
+                    <h2 class="reveal text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+                        Agencies are bleeding. Are <span class="font-serif italic font-normal">you?</span>
+                    </h2>
+                    <p class="reveal delay-100 text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Most agencies lose ~26% of their net margin through operational blindspots.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16 max-w-5xl mx-auto">
+                    <!-- Feature 1 -->
+                    <div class="reveal flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+                            <span class="material-symbols-outlined text-white text-3xl">data_thresholding</span>
+                        </div>
+                        <h3 class="font-semibold text-sm mb-3">Manual Reporting</h3>
+                        <p class="text-[13px] text-muted-foreground leading-relaxed max-w-[260px]">
+                            Your team wastes 100+ hours a month pulling data into dead spreadsheets. We automate the entire flow.
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="reveal delay-100 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+                            <span class="material-symbols-outlined text-white text-3xl">water_drop</span>
+                        </div>
+                        <h3 class="font-semibold text-sm mb-3">Silent Churn</h3>
+                        <p class="text-[13px] text-muted-foreground leading-relaxed max-w-[260px]">
+                            You don't know a client is leaving until they send the cancellation email. AI detects sentiment drops instantly.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="reveal delay-200 flex flex-col items-center text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-b from-white/10 to-transparent border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+                            <span class="material-symbols-outlined text-white text-3xl">monitoring</span>
+                        </div>
+                        <h3 class="font-semibold text-sm mb-3">Blind Profitability</h3>
+                        <p class="text-[13px] text-muted-foreground leading-relaxed max-w-[260px]">
+                            You know top-line revenue, but lack real-time visibility on true net margin across all active retainers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal delay-300 text-center">
+                    <p class="text-sm text-muted-foreground font-medium uppercase tracking-widest">
+                        If you don't track your margins, the market will.
+                    </p>
+                </div>
+            </div>
+        </section>
+        </div> <!-- End of Top Wrapper -->
+
+        <!-- Mission Statement / Video Section -->
+        <section class="py-32 px-6 relative flex justify-center flex-col items-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                 <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-50">
+                    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260325_125119_8e5ae31c-0021-4396-bc08-f7aebeb877a2.mp4" type="video/mp4"/>
+                </video>
+                <div class="absolute inset-0 bg-background/60"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto text-center mb-16">
+                <h2 class="reveal text-3xl md:text-5xl font-medium tracking-tight leading-tight mb-12">
+                    We build your <span class="text-white font-serif italic">financial nervous system</span> — bridging the gap between project delivery and billing without manual input.
+                </h2>
+                <p class="reveal delay-100 text-xl md:text-2xl text-muted-foreground font-medium max-w-3xl mx-auto">
+                    A proprietary backend where data, sentiment, and revenue flow together — predicting churn before it happens.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bottom Wrapper for Dashboard + CTA -->
+        <div class="relative w-full overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+                 <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-60" style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);">
+                    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260325_132944_a0d124bb-eaa1-4082-aa30-2310efb42b4b.mp4" type="video/mp4"/>
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background/80"></div>
+            </div>
+
+        <!-- Dashboard Preview Section -->
+        <section id="dashboard-section" class="py-48 px-6 relative z-10">
+            <div class="relative z-10 max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <p class="text-xs tracking-[3px] uppercase text-muted-foreground mb-4">Infrastructure</p>
+                    <h2 class="reveal text-4xl md:text-6xl font-bold tracking-tighter">
+                        The RevOps <span class="font-serif italic font-normal">Sentinel</span> Dashboard
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="reveal">
+                        <div class="w-2 h-2 rounded-full bg-white mb-4"></div>
+                        <h4 class="font-semibold mb-2">Real-Time Margin</h4>
+                        <p class="text-sm text-muted-foreground">Granular profit tracking per client and project.</p>
+                    </div>
+                    <div class="reveal delay-100">
+                        <div class="w-2 h-2 rounded-full bg-white mb-4"></div>
+                        <h4 class="font-semibold mb-2">AI Sentiment Shield</h4>
+                        <p class="text-sm text-muted-foreground">Analyze comms to detect churn risk instantly.</p>
+                    </div>
+                    <div class="reveal delay-200">
+                        <div class="w-2 h-2 rounded-full bg-white mb-4"></div>
+                        <h4 class="font-semibold mb-2">Omnichannel ROAS</h4>
+                        <p class="text-sm text-muted-foreground">Unified ad spend tracking vs actual closed revenue.</p>
+                    </div>
+                    <div class="reveal delay-300">
+                        <div class="w-2 h-2 rounded-full bg-white mb-4"></div>
+                        <h4 class="font-semibold mb-2">Direct APIs</h4>
+                        <p class="text-sm text-muted-foreground">Native webhooks for Stripe, Meta, and Toggl.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="min-h-[60vh] py-32 px-6 relative z-10 flex items-center justify-center text-center">
+
+            <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+                <div class="relative w-10 h-10 flex items-center justify-center mb-8 reveal">
+                    <div class="absolute inset-0 border-2 border-white/60 rounded-full"></div>
+                    <div class="w-4 h-4 border border-white/60 rounded-full"></div>
+                </div>
+                <h2 class="reveal delay-100 text-5xl md:text-7xl font-serif italic mb-6">Fix Your Tech Stack</h2>
+                <p class="reveal delay-200 text-lg text-muted-foreground mb-10">
+                    I build data infrastructure. Let's see if your agency is compatible.
+                </p>
+                <div class="reveal delay-300 flex flex-col sm:flex-row gap-4">
+                    <button class="btn-glow bg-white text-black font-semibold px-8 py-4 rounded-lg flex items-center justify-center">
+                        Book 15-Min Call
+                    </button>
+                    <button class="liquid-glass border border-white/10 text-white font-semibold px-8 py-4 rounded-lg flex items-center justify-center hover:bg-white/5 transition-colors">
+                        View Backend Logic
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 px-6 md:px-12 relative z-10">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-muted-foreground">
+                    © 2026 Artificially. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-sm text-muted-foreground">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </footer>
+        </div> <!-- End of Bottom Wrapper -->
+    </main>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
