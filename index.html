@@ -188,15 +188,17 @@
                         track real-time profitability.
                     </p>
 
-                    <div class="reveal delay-300 flex justify-center">
-                        <div class="liquid-glass p-1.5 rounded-full inline-flex flex-col sm:flex-row items-center w-full max-w-xl border border-white/10">
+                    <div class="reveal delay-300 flex flex-col items-center justify-center">
+                        <form id="audit-form" class="liquid-glass p-1.5 rounded-full inline-flex flex-col sm:flex-row items-center w-full max-w-xl border border-white/10">
                             <span class="material-symbols-outlined text-muted-foreground text-sm ml-4 hidden sm:block flex-shrink-0">mail</span>
-                            <input type="email" placeholder="Enter your Email"
+                            <input type="email" name="email" id="email" data-fs-field placeholder="Enter your Email" required
                                 class="bg-transparent border-none text-sm px-4 py-3 w-full flex-1 focus:outline-none focus:ring-0 text-white placeholder-muted-foreground" />
-                            <button class="btn-glow w-full sm:w-auto flex-shrink-0 bg-white text-black font-semibold text-sm px-6 py-2.5 rounded-full whitespace-nowrap mt-2 sm:mt-0">
+                            <button type="submit" data-fs-submit-btn class="btn-glow w-full sm:w-auto flex-shrink-0 bg-white text-black font-semibold text-sm px-6 py-2.5 rounded-full whitespace-nowrap mt-2 sm:mt-0">
                                 Request Audit
                             </button>
-                        </div>
+                        </form>
+                        <div data-fs-success class="mt-4 text-sm font-medium text-white hidden">We received your request. We'll be in touch!</div>
+                        <div data-fs-error="email" class="mt-4 text-sm font-medium text-red-400 hidden"></div>
                     </div>
                 </div>
             </section>
@@ -423,6 +425,12 @@
             });
         });
     </script>
+    <!-- Formspree Integration -->
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#audit-form', formId: 'mdabppjp' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 
 </html>
