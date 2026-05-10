@@ -11,6 +11,9 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200,0&display=swap"
         rel="stylesheet" />
+    <!-- Calendly link widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -186,17 +189,14 @@
                     </p>
 
                     <div class="reveal delay-300 flex justify-center">
-                        <form action="mailto:fernandotomemolina2@gmail.com" method="POST" enctype="text/plain"
-                            class="liquid-glass p-1.5 rounded-full inline-flex flex-col sm:flex-row items-center w-full max-w-xl border border-white/10">
-                            <span
-                                class="material-symbols-outlined text-muted-foreground text-sm ml-4 hidden sm:block flex-shrink-0">mail</span>
-                            <input type="email" name="email" placeholder="Enter your Email"
-                                class="bg-transparent border-none text-sm px-4 py-3 w-full flex-1 focus:outline-none focus:ring-0 text-white placeholder-muted-foreground" required />
-                            <button type="submit"
-                                class="btn-glow w-full sm:w-auto flex-shrink-0 bg-white text-black font-semibold text-sm px-6 py-2.5 rounded-full whitespace-nowrap mt-2 sm:mt-0">
+                        <div class="liquid-glass p-1.5 rounded-full inline-flex flex-col sm:flex-row items-center w-full max-w-xl border border-white/10">
+                            <span class="material-symbols-outlined text-muted-foreground text-sm ml-4 hidden sm:block flex-shrink-0">mail</span>
+                            <input type="email" placeholder="Enter your Email"
+                                class="bg-transparent border-none text-sm px-4 py-3 w-full flex-1 focus:outline-none focus:ring-0 text-white placeholder-muted-foreground" />
+                            <button class="btn-glow w-full sm:w-auto flex-shrink-0 bg-white text-black font-semibold text-sm px-6 py-2.5 rounded-full whitespace-nowrap mt-2 sm:mt-0">
                                 Request Audit
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -343,10 +343,10 @@
                         I build data infrastructure. Let's see if your agency is compatible.
                     </p>
                     <div class="reveal delay-300 flex flex-col sm:flex-row gap-4">
-                        <a href="https://calendly.com/fernandotomemolina2/30min" target="_blank"
+                        <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fernandotomemolina2/30min'});return false;"
                             class="btn-glow bg-white text-black font-semibold px-8 py-4 rounded-lg flex items-center justify-center">
                             Book 15-Min Call
-                        </a>
+                        </button>
                         <button onclick="document.getElementById('backend-modal').classList.remove('hidden'); document.getElementById('backend-modal').classList.add('flex');"
                             class="liquid-glass border border-white/10 text-white font-semibold px-8 py-4 rounded-lg flex items-center justify-center hover:bg-white/5 transition-colors">
                             View Backend Logic
@@ -397,7 +397,7 @@
 </pre>
             </div>
             <div class="mt-8 flex justify-end">
-                <a href="https://calendly.com/fernandotomemolina2/30min" target="_blank" class="bg-white text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-transform">Discuss Integration</a>
+                <button onclick="document.getElementById('backend-modal').classList.add('hidden'); document.getElementById('backend-modal').classList.remove('flex'); Calendly.initPopupWidget({url: 'https://calendly.com/fernandotomemolina2/30min'});return false;" class="bg-white text-black font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-transform">Discuss Integration</button>
             </div>
         </div>
     </div>
