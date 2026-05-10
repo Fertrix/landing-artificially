@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service | Artificially</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#000000",
+                        foreground: "#ffffff",
+                        muted: "#1a1a1a",
+                        "muted-foreground": "#a6a6a6"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        serif: ["Instrument Serif", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <header class="w-full p-6 flex justify-between items-center border-b border-white/5">
+        <a href="index.html" class="font-serif italic text-2xl tracking-tight">Artificially.</a>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-24">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Terms of Service</h1>
+        <p class="text-muted-foreground mb-12">Last updated: May 2026</p>
+
+        <div class="space-y-8 text-sm md:text-base leading-relaxed text-muted-foreground">
+            <section>
+                <h2 class="text-white text-xl font-semibold mb-3">1. B2B Professional Services</h2>
+                <p>Artificially operates exclusively as a B2B (Business-to-Business) infrastructure provider. By engaging our services, you confirm that you are acting on behalf of a registered business entity. Our solutions are designed specifically for marketing and creative agencies.</p>
+            </section>
+            
+            <section>
+                <h2 class="text-white text-xl font-semibold mb-3">2. Infrastructure Partner Retainer</h2>
+                <p>We do not sell software licenses. Artificially acts as your "Infrastructure Partner" on a monthly retainer basis. This retainer covers the continuous maintenance, uptime monitoring, and API version adaptation of your RevOps backend, ensuring data continuity across Stripe, Toggl, and Meta Ads.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-xl font-semibold mb-3">3. Service Level & Modifications</h2>
+                <p>Because third-party APIs frequently deprecate endpoints, our retainer includes routine schema updates. However, we are not liable for catastrophic data loss resulting from unilateral service termination by third-party platforms. We guarantee 99.9% uptime for the middleware hosted on our managed servers.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-xl font-semibold mb-3">4. Cancellation Policy</h2>
+                <p>Retainer agreements may be canceled with a 30-day written notice. Upon termination, all API webhooks will be severed, and your isolated data vault will be exported and provided to you before permanent deletion from our servers.</p>
+            </section>
+
+            <p class="pt-8 border-t border-white/5 text-sm">By booking an audit or entering into a retainer, you agree to these B2B terms.</p>
+        </div>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-3xl mx-auto flex justify-between items-center text-sm text-muted-foreground">
+            <span>© 2026 Artificially. All rights reserved.</span>
+            <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        </div>
+    </footer>
+</body>
+</html>
