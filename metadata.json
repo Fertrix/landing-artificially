@@ -1,0 +1,6 @@
+{
+  "name": "Google Antigravity",
+  "description": "An interactive, highly polished landing page for Google Antigravity, the next-gen agent platform, featuring responsive text typing and immersive physical hover grid particles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

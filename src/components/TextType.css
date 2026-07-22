@@ -1,0 +1,15 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.15rem;
+  display: inline-block;
+  font-weight: 300;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
