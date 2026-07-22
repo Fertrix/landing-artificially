@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ArrowRight, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import { X, ArrowRight, CheckCircle2, Loader2, AlertCircle, ShieldAlert } from 'lucide-react';
 
 interface MarginAuditModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const RATE_LIMIT_KEY = 'artificially_audit_submit_history';
+const MAX_SUBMISSIONS_PER_DAY = 3;
+const COOLDOWN_MINUTES = 5;
+
 export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
   const [agencySize, setAgencySize] = useState('5 - 15 team members');
+  const [honeypot, setHoneypot] = useState(''); // Anti-bot trap field (hidden to humans)
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  
+  const openedAtRef = useRef<number>(0);
+
+  useEffect(() => {
+    if (isOpen) {
+      openedAtRef.current = Date.now();
+    }
+  }, [isOpen]);
 
   const handleReset = () => {
     setEmail('');
+    setHoneypot('');
     setAgencySize('5 - 15 team members');
     setIsSubmitting(false);
     setIsSubmitted(false);
@@ -27,14 +41,87 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
     setTimeout(handleReset, 300);
   };
 
+  // Client-side Rate Limiting Checks
+  const checkRateLimit = (): { allowed: boolean; reason?: string } => {
+    try {
+      const historyRaw = localStorage.getItem(RATE_LIMIT_KEY);
+      const history: number[] = historyRaw ? JSON.parse(historyRaw) : [];
+      const now = Date.now();
+
+      // Filter submissions from last 24 hours
+      const recent24h = history.filter(timestamp => now - timestamp < 24 * 60 * 60 * 1000);
+
+      // Check max submissions in 24 hours
+      if (recent24h.length >= MAX_SUBMISSIONS_PER_DAY) {
+        return {
+          allowed: false,
+          reason: `Daily application limit reached (${MAX_SUBMISSIONS_PER_DAY} max per 24 hours). Please try again tomorrow.`
+        };
+      }
+
+      // Check cooldown from last submission
+      const lastSubmission = recent24h[recent24h.length - 1];
+      if (lastSubmission && now - lastSubmission < COOLDOWN_MINUTES * 60 * 1000) {
+        const remainingSec = Math.ceil((COOLDOWN_MINUTES * 60 * 1000 - (now - lastSubmission)) / 1000);
+        const minLeft = Math.ceil(remainingSec / 60);
+        return {
+          allowed: false,
+          reason: `Rate limit active. Please wait ${minLeft} minute${minLeft > 1 ? 's' : ''} before submitting another application.`
+        };
+      }
+    } catch {
+      // Fallback if localStorage is unavailable
+    }
+    return { allowed: true };
+  };
+
+  const recordSubmission = () => {
+    try {
+      const historyRaw = localStorage.getItem(RATE_LIMIT_KEY);
+      const history: number[] = historyRaw ? JSON.parse(historyRaw) : [];
+      const now = Date.now();
+      const recent24h = history.filter(timestamp => now - timestamp < 24 * 60 * 60 * 1000);
+      recent24h.push(now);
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent24h));
+    } catch {
+      // Fallback
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
-    // Basic email format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.trim() || !emailRegex.test(email.trim())) {
+    // 1. Honeypot Anti-Bot Shield (If honeypot field is filled, it's 100% a spam bot)
+    if (honeypot.trim() !== '') {
+      // Fake success to trap the bot silently without sending data
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      }, 800);
+      return;
+    }
+
+    // 2. Speed Shield (Form submitted under 1.2s from modal open is a bot script)
+    const timeSpent = Date.now() - openedAtRef.current;
+    if (timeSpent < 1200) {
+      setErrorMsg('Submission too fast. Please review your details and try again.');
+      return;
+    }
+
+    // 3. Email Format Validation
+    const cleanEmail = email.trim().toLowerCase();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!cleanEmail || !emailRegex.test(cleanEmail)) {
       setErrorMsg('Please enter a valid work email address.');
+      return;
+    }
+
+    // 4. Rate Limit Verification
+    const rateCheck = checkRateLimit();
+    if (!rateCheck.allowed) {
+      setErrorMsg(rateCheck.reason || 'Rate limit active. Please try again later.');
       return;
     }
 
@@ -48,13 +135,15 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: email.trim(),
+          email: cleanEmail,
           agencySize: agencySize,
-          submittedAt: new Date().toISOString()
+          submittedAt: new Date().toISOString(),
+          _gotcha: '' // Formspree native honeypot verification
         })
       });
 
       if (response.ok) {
+        recordSubmission();
         setIsSubmitted(true);
       } else {
         const data = await response.json().catch(() => null);
@@ -112,6 +201,20 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot Trap Input Field (Hidden from humans, filled by spam bots) */}
+                  <div className="absolute opacity-0 pointer-events-none -z-50 h-0 w-0 overflow-hidden" aria-hidden="true">
+                    <label htmlFor="website_url">Website URL</label>
+                    <input
+                      type="text"
+                      id="website_url"
+                      name="website_url"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   {/* Field 1: Work Email */}
                   <div>
                     <label className="block text-xs font-mono font-semibold uppercase tracking-wider text-neutral-400 mb-2">
@@ -120,47 +223,46 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
                     <input
                       type="email"
                       required
+                      placeholder="name@agency.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="alex@agency.com"
-                      className="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all font-mono"
+                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-white rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-all"
                     />
                   </div>
 
-                  {/* Field 2: Agency Size */}
+                  {/* Field 2: Agency Size Dropdown */}
                   <div>
                     <label className="block text-xs font-mono font-semibold uppercase tracking-wider text-neutral-400 mb-2">
                       Agency Size
                     </label>
-                    <div className="relative">
-                      <select
-                        value={agencySize}
-                        onChange={(e) => setAgencySize(e.target.value)}
-                        className="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all appearance-none font-sans cursor-pointer pr-10"
-                      >
-                        <option value="5 - 15 team members">5 - 15 team members</option>
-                        <option value="15 - 50 team members">15 - 50 team members</option>
-                        <option value="50+ team members">50+ team members</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-400">
-                        ▼
-                      </div>
-                    </div>
+                    <select
+                      value={agencySize}
+                      onChange={(e) => setAgencySize(e.target.value)}
+                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-white rounded-xl px-4 py-3 text-sm text-white outline-none transition-all cursor-pointer appearance-none"
+                    >
+                      <option value="5 - 15 team members">5 - 15 team members</option>
+                      <option value="15 - 50 team members">15 - 50 team members</option>
+                      <option value="50+ team members">50+ team members</option>
+                    </select>
                   </div>
 
-                  {/* Error Display */}
+                  {/* Error Alert Display */}
                   {errorMsg && (
-                    <div className="flex items-center gap-2 text-xs text-rose-400 bg-rose-950/40 border border-rose-900/60 p-3 rounded-xl">
-                      <AlertCircle className="w-4 h-4 shrink-0" />
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-start gap-2.5 p-3.5 bg-red-950/50 border border-red-800/80 rounded-xl text-xs text-red-300 font-medium"
+                    >
+                      <ShieldAlert className="w-4 h-4 shrink-0 text-red-400 mt-0.5" />
                       <span>{errorMsg}</span>
-                    </div>
+                    </motion.div>
                   )}
 
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-white hover:bg-neutral-200 text-neutral-950 font-medium py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                    className="w-full mt-2 inline-flex items-center justify-center gap-2 bg-white hover:bg-neutral-100 text-neutral-950 font-semibold px-6 py-3.5 rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-[0.99]"
                   >
                     {isSubmitting ? (
                       <>
@@ -170,7 +272,7 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
                     ) : (
                       <>
                         <span>Submit Application</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4 text-neutral-950" />
                       </>
                     )}
                   </button>
@@ -179,25 +281,28 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
             ) : (
               /* Screen 2: Confirmation Screen */
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="py-4 flex flex-col"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-4 flex flex-col text-left"
               >
-                <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5">
-                  <CheckCircle2 className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl bg-emerald-950/80 border border-emerald-800 flex items-center justify-center mb-6 text-emerald-400 shadow-inner">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400" />
                 </div>
-                <h3 className="font-display font-semibold text-2xl text-white tracking-tight mb-4">
+
+                <h3 className="font-display font-semibold text-2xl text-white tracking-tight mb-3">
                   Application Received.
                 </h3>
-                <p className="text-neutral-400 text-sm leading-relaxed font-mono mb-8">
+
+                <p className="text-sm md:text-base text-neutral-300 font-normal leading-relaxed mb-8">
                   We review agency infrastructure compatibility and active volume. If your workspace qualifies, you will receive a direct invitation link to book your 30-minute private audit within 12 hours.
                 </p>
+
                 <button
                   onClick={handleClose}
-                  className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm border border-neutral-800"
+                  type="button"
+                  className="w-full inline-flex items-center justify-center bg-neutral-900 hover:bg-neutral-850 text-white font-medium px-6 py-3 rounded-xl border border-neutral-800 transition-all cursor-pointer"
                 >
-                  Close
+                  Done
                 </button>
               </motion.div>
             )}
