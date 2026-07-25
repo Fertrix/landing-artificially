@@ -37,6 +37,7 @@ import { TermsOfService } from './pages/TermsOfService';
 import { SecurityPolicy } from './pages/SecurityPolicy';
 import { MarginAuditModal } from './components/MarginAuditModal';
 import { Logo } from './components/Logo';
+import { Analytics } from '@vercel/analytics/react';
 
 
 // Custom SVG Logo for Google Antigravity designed with Google's iconic four-color theme
@@ -974,6 +975,7 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+      <Analytics />
     </main>
   );
 }
