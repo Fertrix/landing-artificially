@@ -18,6 +18,7 @@ import {
   Database,
   ArrowUpRight
 } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 import DotField from './components/DotField';
 import TextType from './components/TextType';
@@ -974,6 +975,7 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+      <Analytics />
     </main>
   );
 }
