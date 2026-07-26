@@ -151,19 +151,19 @@ export const InteractiveDashboardDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="w-[96%] sm:w-full max-w-[500px] aspect-[0.88] xs:aspect-[0.96] sm:aspect-[1.25] scale-[0.92] xs:scale-[0.96] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
+            className="w-full max-w-[480px] aspect-[1.1] sm:aspect-[1.25] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
           >
             {/* macOS Title Bar */}
-            <div className="h-11 border-b border-neutral-100 px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
+            <div className="h-9 sm:h-11 border-b border-neutral-100 px-3 sm:px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
               <div className="flex space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]" />
               </div>
-              <span className="text-xs font-medium text-neutral-500 font-mono tracking-tight">
+              <span className="text-[10px] sm:text-xs font-medium text-neutral-500 font-mono tracking-tight">
                 Revenue Protection Dashboard
               </span>
-              <div className="w-12" />
+              <div className="w-10 sm:w-12" />
             </div>
 
             {/* Success Full Overlay State */}
@@ -171,23 +171,23 @@ export const InteractiveDashboardDemo: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="absolute inset-x-0 bottom-0 top-11 bg-white z-40 flex flex-col items-center justify-center p-6 text-center"
+                className="absolute inset-x-0 bottom-0 top-9 sm:top-11 bg-white z-40 flex flex-col items-center justify-center p-4 sm:p-6 text-center"
               >
                 <motion.div
                   initial={{ scale: 0.4, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: 'spring', damping: 15 }}
-                  className="mb-4"
+                  className="mb-3 sm:mb-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 shadow-[0_4px_20px_rgba(16,185,129,0.1)]">
-                    <CheckCircle2 className="w-8 h-8" />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 shadow-[0_4px_20px_rgba(16,185,129,0.1)]">
+                    <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
                 </motion.div>
                 <motion.h4
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
-                  className="text-base font-semibold text-neutral-900 tracking-tight"
+                  className="text-sm sm:text-base font-semibold text-neutral-900 tracking-tight"
                 >
                   Recovered!
                 </motion.h4>
@@ -195,18 +195,18 @@ export const InteractiveDashboardDemo: React.FC = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xs text-neutral-500 mt-1 max-w-[260px] leading-relaxed"
+                  className="text-[10px] sm:text-xs text-neutral-500 mt-1 max-w-[260px] leading-relaxed"
                 >
                   ${leakValue} invoice successfully dispatched to worker@agency.com.
                 </motion.p>
               </motion.div>
             ) : (
               /* Normal Flow Panel Layout */
-              <div className="flex-1 p-5 flex flex-col justify-between relative bg-gradient-to-b from-white to-[#fcfcfc]">
+              <div className="flex-1 p-3 sm:p-5 flex flex-col justify-between relative bg-gradient-to-b from-white to-[#fcfcfc]">
                 
                 {/* Upper Log Terminal / Message Detector */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-[11px] font-medium">
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-medium">
                     <div className="flex items-center space-x-1.5 text-neutral-500">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -214,29 +214,29 @@ export const InteractiveDashboardDemo: React.FC = () => {
                       </span>
                       <span className="font-semibold tracking-tight">Scope Watchdog</span>
                     </div>
-                    <span className="font-mono text-neutral-400 text-[9px]">v1.0.4</span>
+                    <span className="font-mono text-neutral-400 text-[8px] sm:text-[9px]">v1.0.4</span>
                   </div>
 
                   {/* Log Content container */}
-                  <div className="bg-[#f8f9fa] border border-neutral-200/60 rounded-xl p-3.5 text-left shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
+                  <div className="bg-[#f8f9fa] border border-neutral-200/60 rounded-xl p-2.5 sm:p-3.5 text-left shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
                     {step === 0 ? (
-                      <div className="flex items-center space-x-2.5 py-1">
-                        <div className="w-3.5 h-3.5 border-2 border-neutral-300 border-t-blue-500 rounded-full animate-spin" />
-                        <span className="text-xs font-medium text-neutral-450">Listening to incoming client threads...</span>
+                      <div className="flex items-center space-x-2 py-1">
+                        <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 border-2 border-neutral-300 border-t-blue-500 rounded-full animate-spin" />
+                        <span className="text-[10px] sm:text-xs font-medium text-neutral-450">Listening to incoming client threads...</span>
                       </div>
                     ) : (
                       <motion.div
                         initial={{ opacity: 0, y: 4 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="space-y-2"
+                        className="space-y-1.5 sm:space-y-2"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-blue-600 flex items-center gap-1.5">
-                            <Mail className="w-3.5 h-3.5 text-blue-500" /> Out-of-Scope Mail Detected
+                          <span className="text-[10px] sm:text-xs font-bold text-blue-600 flex items-center gap-1.5">
+                            <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500" /> Out-of-Scope Mail Detected
                           </span>
-                          <span className="text-[9px] font-mono text-neutral-450">Just now</span>
+                          <span className="text-[8px] sm:text-[9px] font-mono text-neutral-450">Just now</span>
                         </div>
-                        <p className="text-xs text-neutral-600 leading-relaxed italic bg-white p-2.5 rounded-lg border border-neutral-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                        <p className="text-[10px] sm:text-xs text-neutral-600 leading-normal sm:leading-relaxed italic bg-white p-2 sm:p-2.5 rounded-lg border border-neutral-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
                           "Hi team, can we do a quick fix on the landing page? It should only take 5 minutes..."
                         </p>
                       </motion.div>
@@ -245,9 +245,9 @@ export const InteractiveDashboardDemo: React.FC = () => {
                 </div>
 
                 {/* Dashboard Metric & Action Row */}
-                <div className="grid grid-cols-2 gap-4 mt-2">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mt-2">
                   {/* Revenue Leak Tracker Box */}
-                  <div className="bg-[#f8f9fa] border border-neutral-200/60 rounded-xl p-3.5 flex flex-col justify-between text-left h-[104px] shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
+                  <div className="bg-[#f8f9fa] border border-neutral-200/60 rounded-xl p-2.5 sm:p-3.5 flex flex-col justify-between text-left h-[88px] sm:h-[104px] shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
                     <span className="text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Unpaid Scope Leak</span>
                     <div className="flex flex-col">
                       <span className="text-3xl font-semibold tracking-tight text-red-500 font-mono flex items-baseline">

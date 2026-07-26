@@ -189,49 +189,49 @@ export const InteractiveChurnDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="relative w-[96%] sm:w-full max-w-[500px] aspect-[0.84] xs:aspect-[0.92] sm:aspect-[1.1] scale-[0.92] xs:scale-[0.96] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left"
+            className="relative w-full max-w-[480px] aspect-[0.95] sm:aspect-[1.1] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left"
           >
             {/* macOS Title Bar */}
-            <div className="flex items-center justify-between px-4 h-11 bg-[#fafafa] border-b border-neutral-100 shrink-0">
+            <div className="flex items-center justify-between px-3 sm:px-4 h-9 sm:h-11 bg-[#fafafa] border-b border-neutral-100 shrink-0">
               {/* Traffic Lights */}
               <div className="flex items-center space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]" />
               </div>
 
               {/* Clean Monospaced Title */}
-              <span className="text-xs font-normal text-neutral-400 font-mono tracking-tight">
+              <span className="text-[10px] sm:text-xs font-normal text-neutral-400 font-mono tracking-tight">
                 Mail conversation
               </span>
 
               {/* Spacer */}
-              <div className="w-12" />
+              <div className="w-10 sm:w-12" />
             </div>
 
             {/* Content Area / Email Viewport */}
-            <div className="flex-1 p-5 overflow-hidden flex flex-col justify-start bg-gradient-to-b from-white to-[#fcfcfc] relative">
+            <div className="flex-1 p-3 sm:p-5 overflow-hidden flex flex-col justify-start bg-gradient-to-b from-white to-[#fcfcfc] relative">
               
               {/* Thread History Container */}
-              <div className="space-y-4 w-full">
+              <div className="space-y-3 sm:space-y-4 w-full">
                 
                 {/* 1. Original Agency Email */}
                 {step >= 1 && (
                   <motion.div 
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white rounded-xl p-4 border border-neutral-150 shadow-[0_2px_8px_rgba(0,0,0,0.01)] space-y-2.5"
+                    className="bg-white rounded-xl p-3 sm:p-4 border border-neutral-150 shadow-[0_2px_8px_rgba(0,0,0,0.01)] space-y-2 sm:space-y-2.5"
                   >
-                    <div className="flex justify-between items-start text-[11px]">
+                    <div className="flex justify-between items-start text-[10px] sm:text-[11px]">
                       <span className="font-semibold text-neutral-700">Your Agency to Mark (Client)</span>
-                      <span className="text-neutral-400 font-mono">5 days ago, 4:12 PM</span>
+                      <span className="text-neutral-400 font-mono text-[9px] sm:text-[11px]">5 days ago</span>
                     </div>
                     
-                    <div className="text-xs font-semibold text-neutral-800 bg-neutral-50 px-2.5 py-1.5 rounded border border-neutral-100">
+                    <div className="text-[10px] sm:text-xs font-semibold text-neutral-800 bg-neutral-50 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded border border-neutral-100">
                       Subject: Sync for tomorrow / Monthly Progress
                     </div>
                     
-                    <p className="text-xs md:text-[13px] text-neutral-500 leading-relaxed min-h-[32px] whitespace-pre-wrap">
+                    <p className="text-[10px] sm:text-xs md:text-[13px] text-neutral-500 leading-normal sm:leading-relaxed min-h-[28px] sm:min-h-[32px] whitespace-pre-wrap">
                       {agencyText}
                       {step === 1 && agencyText.length < fullAgencyText.length && (
                         <span className="inline-block w-0.5 h-3.5 bg-blue-500 ml-0.5 animate-pulse" style={{ verticalAlign: 'middle' }} />

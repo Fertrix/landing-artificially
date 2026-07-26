@@ -151,19 +151,19 @@ export const InteractiveChurnShieldDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="w-[96%] sm:w-full max-w-[500px] aspect-[0.88] xs:aspect-[0.96] sm:aspect-[1.25] scale-[0.92] xs:scale-[0.96] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
+            className="w-full max-w-[480px] aspect-[1.1] sm:aspect-[1.25] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
           >
             {/* macOS Title Bar */}
-            <div className="h-11 border-b border-neutral-100 px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
+            <div className="h-9 sm:h-11 border-b border-neutral-100 px-3 sm:px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
               <div className="flex space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]" />
               </div>
-              <span className="text-xs font-medium text-neutral-500 font-mono tracking-tight">
+              <span className="text-[10px] sm:text-xs font-medium text-neutral-500 font-mono tracking-tight">
                 Churn Shield Dashboard
               </span>
-              <div className="w-12" />
+              <div className="w-10 sm:w-12" />
             </div>
 
             {/* Success Full Overlay State */}
@@ -171,23 +171,23 @@ export const InteractiveChurnShieldDemo: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="absolute inset-x-0 bottom-0 top-11 bg-white z-40 flex flex-col items-center justify-center p-6 text-center"
+                className="absolute inset-x-0 bottom-0 top-9 sm:top-11 bg-white z-40 flex flex-col items-center justify-center p-4 sm:p-6 text-center"
               >
                 <motion.div
                   initial={{ scale: 0.4, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: 'spring', damping: 15 }}
-                  className="mb-4"
+                  className="mb-3 sm:mb-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 shadow-[0_4px_20px_rgba(16,185,129,0.1)]">
-                    <CheckCircle2 className="w-8 h-8" />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 shadow-[0_4px_20px_rgba(16,185,129,0.1)]">
+                    <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
                 </motion.div>
                 <motion.h4
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
-                  className="text-base font-semibold text-neutral-900 tracking-tight"
+                  className="text-sm sm:text-base font-semibold text-neutral-900 tracking-tight"
                 >
                   Retainer Saved!
                 </motion.h4>
@@ -195,14 +195,14 @@ export const InteractiveChurnShieldDemo: React.FC = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xs text-neutral-500 mt-1 max-w-[280px] leading-relaxed"
+                  className="text-[10px] sm:text-xs text-neutral-500 mt-1 max-w-[280px] leading-relaxed"
                 >
                   Alert sent to team. Automated client follow-up has been prioritized.
                 </motion.p>
               </motion.div>
             ) : (
               /* Normal Flow Panel Layout */
-              <div className="flex-1 p-5 flex flex-col justify-between relative bg-gradient-to-b from-white to-[#fcfcfc]">
+              <div className="flex-1 p-3 sm:p-5 flex flex-col justify-between relative bg-gradient-to-b from-white to-[#fcfcfc]">
                 
                 {/* Upper Log Terminal / Sentiment Detector */}
                 <div className="space-y-3">

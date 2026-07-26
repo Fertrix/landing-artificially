@@ -135,64 +135,64 @@ export const InteractiveEmailDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="relative w-[96%] sm:w-full max-w-[500px] aspect-[0.9] xs:aspect-[1.0] sm:aspect-[16/10] scale-[0.92] xs:scale-[0.96] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left"
+            className="relative w-full max-w-[480px] aspect-[1.15] sm:aspect-[16/10] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left"
           >
             {/* macOS Title Bar */}
-            <div className="flex items-center justify-between px-4 py-3 bg-[#fafafa] border-b border-neutral-100 shrink-0">
+            <div className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 bg-[#fafafa] border-b border-neutral-100 shrink-0">
               {/* Traffic Lights */}
               <div className="flex items-center space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]" />
               </div>
 
               {/* Title */}
-              <span className="text-xs font-medium text-neutral-500 font-mono tracking-tight">
+              <span className="text-[10px] sm:text-xs font-medium text-neutral-500 font-mono tracking-tight">
                 New Message
               </span>
 
               {/* Window Controls Right Placeholder */}
-              <div className="w-12" />
+              <div className="w-10 sm:w-12" />
             </div>
 
             {/* Email Toolbar with Send Button */}
-            <div className="flex items-center justify-between px-4 py-2 bg-white border-b border-neutral-100 shrink-0">
-              <div className="flex items-center space-x-3">
+            <div className="flex items-center justify-between px-3 py-1.5 sm:px-4 sm:py-2 bg-white border-b border-neutral-100 shrink-0">
+              <div className="flex items-center space-x-2 sm:space-x-3">
                 {/* Send Button */}
                 <motion.button
                   animate={{
                     scale: isSendClicked ? 0.92 : isSendHovered ? 1.04 : 1,
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight transition-colors duration-200 ${
+                  className={`flex items-center space-x-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-tight transition-colors duration-200 ${
                     isSendHovered 
                       ? 'bg-blue-600 text-white' 
                       : 'bg-blue-500 text-white'
                   }`}
                 >
-                  <Send className="w-3.5 h-3.5 fill-white" />
+                  <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-white" />
                   <span>Send</span>
                 </motion.button>
 
                 {/* Attachment Icons */}
-                <Paperclip className="w-4 h-4 text-neutral-400 cursor-default" />
-                <div className="w-[1px] h-4 bg-neutral-200" />
+                <Paperclip className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400 cursor-default" />
+                <div className="w-[1px] h-3.5 sm:h-4 bg-neutral-200" />
                 <div className="flex space-x-1">
-                  <div className="w-4 h-4 rounded border border-neutral-300 flex items-center justify-center text-[9px] font-bold text-neutral-400 font-mono">A</div>
-                  <div className="w-4 h-4 rounded border border-neutral-300 flex items-center justify-center text-[9px] font-bold text-neutral-400 font-mono">B</div>
+                  <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded border border-neutral-300 flex items-center justify-center text-[8px] sm:text-[9px] font-bold text-neutral-400 font-mono">A</div>
+                  <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded border border-neutral-300 flex items-center justify-center text-[8px] sm:text-[9px] font-bold text-neutral-400 font-mono">B</div>
                 </div>
               </div>
             </div>
 
             {/* Recipients Header */}
-            <div className="px-4 py-2.5 border-b border-neutral-100 flex items-center gap-3 text-xs shrink-0">
-              <span className="w-16 shrink-0 text-neutral-400">To:</span>
+            <div className="px-3 py-2 sm:px-4 sm:py-2.5 border-b border-neutral-100 flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs shrink-0">
+              <span className="w-12 sm:w-16 shrink-0 text-neutral-400">To:</span>
               <span className="text-neutral-700 font-medium">worker@agency.com</span>
             </div>
 
             {/* Subject Header */}
-            <div className="px-4 py-2.5 border-b border-neutral-100 flex items-center gap-3 text-xs shrink-0">
-              <span className="w-16 shrink-0 text-neutral-400">Subject:</span>
+            <div className="px-3 py-2 sm:px-4 sm:py-2.5 border-b border-neutral-100 flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs shrink-0">
+              <span className="w-12 sm:w-16 shrink-0 text-neutral-400">Subject:</span>
               <span className="text-neutral-800 font-semibold flex items-center min-h-[16px]">
                 {subject}
                 {step === 1 && subject.length < fullSubject.length && (
@@ -202,7 +202,7 @@ export const InteractiveEmailDemo: React.FC = () => {
             </div>
 
             {/* Email Message Content Area */}
-            <div className="flex-1 p-4 text-xs text-neutral-800 leading-relaxed font-normal whitespace-pre-wrap select-none outline-none">
+            <div className="flex-1 p-3 sm:p-4 text-[11px] sm:text-xs text-neutral-800 leading-normal sm:leading-relaxed font-normal whitespace-pre-wrap select-none outline-none">
               <div className="flex items-start min-h-[60px]">
                 <span>{body}</span>
                 {step === 3 && body.length < fullBody.length && (
