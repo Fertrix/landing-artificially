@@ -151,7 +151,7 @@ export const InteractiveChurnShieldDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="w-full max-w-[480px] aspect-[1.1] sm:aspect-[1.25] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
+            className="w-full max-w-[480px] aspect-[0.74] xs:aspect-[0.80] sm:aspect-[1.25] bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
           >
             {/* macOS Title Bar */}
             <div className="h-9 sm:h-11 border-b border-neutral-100 px-3 sm:px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
