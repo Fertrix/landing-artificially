@@ -151,7 +151,7 @@ export const InteractiveDashboardDemo: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: -40, filter: 'blur(4px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 180 }}
-            className="w-full max-w-[480px] aspect-[0.88] xs:aspect-[0.96] sm:aspect-[1.25] scale-[0.80] xs:scale-[0.88] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
+            className="w-[96%] sm:w-full max-w-[500px] aspect-[0.88] xs:aspect-[0.96] sm:aspect-[1.25] scale-[0.92] xs:scale-[0.96] sm:scale-100 origin-center bg-white rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.08),_0_1px_3px_rgba(0,0,0,0.02)] border border-neutral-150 overflow-hidden flex flex-col font-sans select-none text-left text-neutral-800 relative"
           >
             {/* macOS Title Bar */}
             <div className="h-11 border-b border-neutral-100 px-4 flex items-center justify-between bg-[#fafafa] shrink-0">
