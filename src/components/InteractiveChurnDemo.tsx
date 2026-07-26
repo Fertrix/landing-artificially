@@ -38,7 +38,7 @@ export const InteractiveChurnDemo: React.FC = () => {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.95 }
+      { threshold: 0.35 }
     );
 
     if (containerRef.current) {

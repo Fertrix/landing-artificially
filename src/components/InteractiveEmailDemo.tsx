@@ -23,7 +23,7 @@ export const InteractiveEmailDemo: React.FC = () => {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.95 } // Trigger when 95% visible
+      { threshold: 0.35 } // Trigger when comfortably visible on mobile and desktop
     );
 
     if (containerRef.current) {

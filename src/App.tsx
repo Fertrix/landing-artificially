@@ -525,9 +525,9 @@ export default function App() {
 
           {/* Connector Line Wrapper */}
           <div ref={parentRef} className="relative w-full">
-            {/* Connector SVG lines overlay */}
+            {/* Connector SVG lines overlay (Desktop only - hidden on mobile to avoid cutting through stacked text) */}
             {coords.x1 > 0 && coords.x2 > 0 && (
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
+              <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
                 {/* Dashed connector path with 90-degree bends */}
                 <path
                   d={
@@ -591,7 +591,7 @@ export default function App() {
               {/* Right side container card holding the vector interactive email demo */}
               <div className="lg:col-span-7 w-full flex justify-center">
                 {/* Giant soft glowing colorful gradient frame mirroring the user's second screenshot */}
-                <div ref={upperCardRef} className="relative w-full max-w-[560px] aspect-[1.3] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-6 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
+                <div ref={upperCardRef} className="relative w-full max-w-[560px] aspect-[1.3] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-4 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
                   {/* Backdrop subtle ambient color blobs matching the upload */}
                   <div className="absolute -top-16 -right-16 w-64 h-64 bg-blue-150/40 rounded-full blur-[80px] pointer-events-none" />
                   <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-amber-100/40 rounded-full blur-[80px] pointer-events-none" />
@@ -603,8 +603,10 @@ export default function App() {
 
             </div>
 
-            {/* Fine horizontal divider line placeholder - retains structural spacing and guides calculations */}
-            <div ref={dividerRef} className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 h-px" />
+            {/* Fine horizontal divider line placeholder - retains structural spacing and guides calculations on Desktop; clean divider line on Mobile */}
+            <div ref={dividerRef} className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 h-px flex items-center justify-center">
+              <div className="lg:hidden w-full border-t border-[#cbd5e1]" />
+            </div>
 
             {/* Revenue Recovery Section - Dashboard on Left, Text on Right */}
             <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -612,7 +614,7 @@ export default function App() {
               {/* Left side container card holding the light dashboard demo */}
               <div className="lg:col-span-7 w-full flex justify-center order-2 lg:order-1">
                 {/* Giant soft glowing colorful gradient frame mirroring the user's email demo exactly */}
-                <div ref={lowerCardRef} className="relative w-full max-w-[560px] aspect-[1.1] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-6 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
+                <div ref={lowerCardRef} className="relative w-full max-w-[560px] aspect-[1.1] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-4 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
                   {/* Backdrop subtle ambient color blobs matching the email demo */}
                   <div className="absolute -top-16 -left-16 w-64 h-64 bg-blue-150/40 rounded-full blur-[80px] pointer-events-none" />
                   <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-amber-100/40 rounded-full blur-[80px] pointer-events-none" />
@@ -665,9 +667,9 @@ export default function App() {
 
           {/* Churn Connector Line Wrapper */}
           <div ref={churnParentRef} className="relative w-full">
-            {/* Connector SVG lines overlay */}
+            {/* Connector SVG lines overlay (Desktop only - hidden on mobile) */}
             {churnCoords.x1 > 0 && churnCoords.x2 > 0 && (
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
+              <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
                 {/* Dashed connector path with 90-degree bends */}
                 <path
                   d={
@@ -731,7 +733,7 @@ export default function App() {
               {/* Right side: Interactive Motion Graphic */}
               <div className="lg:col-span-7 w-full flex justify-center order-2">
                 {/* Giant soft glowing colorful gradient frame mirroring the user's other cards */}
-                <div ref={churnUpperCardRef} className="relative w-full max-w-[560px] aspect-[1.1] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-6 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
+                <div ref={churnUpperCardRef} className="relative w-full max-w-[560px] aspect-[1.1] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-4 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
                   {/* Backdrop subtle ambient color blobs */}
                   <div className="absolute -top-16 -left-16 w-64 h-64 bg-blue-150/40 rounded-full blur-[80px] pointer-events-none" />
                   <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-red-100/10 rounded-full blur-[80px] pointer-events-none" />
@@ -743,8 +745,10 @@ export default function App() {
 
             </div>
 
-            {/* Fine horizontal divider line placeholder - retains structural spacing and guides calculations */}
-            <div ref={churnDividerRef} className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 h-px" />
+            {/* Fine horizontal divider line placeholder - retains structural spacing and guides calculations on Desktop; clean divider line on Mobile */}
+            <div ref={churnDividerRef} className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 h-px flex items-center justify-center">
+              <div className="lg:hidden w-full border-t border-[#cbd5e1]" />
+            </div>
 
             {/* Churn Shield Section - Motion on Left, Text on Right */}
             <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -752,7 +756,7 @@ export default function App() {
               {/* Left side: Interactive Churn Shield Demo (Dashboard) */}
               <div className="lg:col-span-7 w-full flex justify-center order-2 lg:order-1">
                 {/* Giant soft glowing colorful gradient frame mirroring the others */}
-                <div ref={churnLowerCardRef} className="relative w-full max-w-[560px] aspect-[1.15] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-6 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
+                <div ref={churnLowerCardRef} className="relative w-full max-w-[560px] aspect-[1.15] rounded-[32px] md:rounded-[40px] bg-gradient-to-tr from-[#eef2f6] via-[#f5f3ff] to-[#fefaf0] p-4 sm:p-8 md:p-12 shadow-[0_24px_50px_rgba(0,0,0,0.02)] border border-neutral-100/60 flex items-center justify-center overflow-hidden">
                   {/* Backdrop subtle ambient color blobs */}
                   <div className="absolute -top-16 -left-16 w-64 h-64 bg-blue-150/40 rounded-full blur-[80px] pointer-events-none" />
                   <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-amber-100/40 rounded-full blur-[80px] pointer-events-none" />
