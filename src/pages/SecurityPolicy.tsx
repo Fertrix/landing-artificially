@@ -150,7 +150,7 @@ export const SecurityPolicy: React.FC<LegalPageProps> = ({ onNavigate }) => {
               <span>Payment & Financial Compliance</span>
             </h2>
             <p className="text-neutral-600 text-sm md:text-base leading-relaxed">
-              Payment processing and tax calculations are handled by <strong className="text-neutral-900">Paddle</strong> as Merchant of Record. Artificially Hub never stores, processes, or transmits raw credit card numbers or banking credentials.
+              Payments are processed by a PCI-compliant payment provider. Artificially Hub never stores, processes, or transmits raw credit card numbers or banking credentials.
             </p>
           </section>
 

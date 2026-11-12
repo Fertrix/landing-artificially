@@ -166,7 +166,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onApplyClick }) => {
 
           {/* Subtitle */}
           <p className="text-neutral-500 text-xs sm:text-lg leading-relaxed font-medium tracking-tight mb-7 sm:mb-9 max-w-2xl">
-            Apply for a private 30-minute margin audit to pinpoint unbilled hours and churn risks across your active accounts. Applications are reviewed selectively based on agency volume and infrastructure compatibility.
+            Start with the free 60-second check, or run a 14-day pilot on one client account. If we don’t find at least $1,000 in unbilled work, you pay nothing.
           </p>
 
           {/* Action Button */}
@@ -176,7 +176,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onApplyClick }) => {
               type="button"
               className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#18181b] hover:bg-black text-white text-xs sm:text-base font-medium px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Apply for Margin Audit</span>
+              <span>Start a pilot</span>
               <ArrowUpRight className="w-4 h-4 shrink-0" />
             </button>
           </div>

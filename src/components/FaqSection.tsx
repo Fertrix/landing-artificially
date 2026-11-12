@@ -15,21 +15,21 @@ const faqData: FaqItem[] = [
     number: '01',
     question: 'How long does implementation take?',
     answer:
-      'Full infrastructure deployment takes 2 to 4 weeks. We custom-build and calibrate your dedicated environment to guarantee bank-grade data security with zero developer load on your team.',
+      'A pilot is live in a few days. We connect one client account (Slack channel and inbox) with read-only access and calibrate it to your contract and hourly rate. Your team does not need to do anything.',
   },
   {
     id: 'workflow',
     number: '02',
     question: 'Does my team need to change their daily workflow?',
     answer:
-      'No. Our engine hooks directly into the tools you already use (Slack, Toggl, Stripe, Gmail). Your team continues working as they do today without adopting new habits or software.',
+      'No. It reads the tools you already use (Slack, Gmail or Outlook, your time tracker). Nothing is sent to your clients automatically: you review every flag and approve every change order.',
   },
   {
     id: 'poc',
     number: '03',
-    question: 'How does the 30-day proof of concept work?',
+    question: 'How does the pilot work?',
     answer:
-      "We deploy the system with zero annual lock-in. You keep 100% of all recovered margin with zero revenue share. If the system doesn't identify at least $2,000 in unbilled leaks during your first 30 days, your second month is completely free until it does.",
+      "For 14 days we watch one client account. If we don't surface at least $1,000 in unbilled work, you pay nothing. If we do, you decide whether to keep it running. No lock-in, no annual contract.",
   },
 ];
 
@@ -57,7 +57,7 @@ export const FaqSection: React.FC = () => {
             </h3>
           </div>
           <p className="text-neutral-500 text-sm md:text-base font-medium max-w-sm">
-            Everything you need to know about implementation, workflows, and our performance guarantee.
+            Everything you need to know about setup, workflows and the pilot.
           </p>
         </div>
 

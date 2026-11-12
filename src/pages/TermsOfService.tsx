@@ -70,7 +70,7 @@ export const TermsOfService: React.FC<LegalPageProps> = ({ onNavigate }) => {
           className="prose prose-neutral max-w-none text-neutral-700 leading-relaxed text-base md:text-lg mb-12"
         >
           <p className="mb-4">
-            Welcome to Artificially Hub. These Terms of Service ("Terms") constitute a legally binding agreement between Artificially Hub Inc. ("Company", "we", "us") and the business entity subscribing to or accessing our platform ("Customer", "you").
+            Welcome to Artificially Hub. These Terms of Service ("Terms") constitute a legally binding agreement between Artificially Hub ("Company", "we", "us") and the business entity subscribing to or accessing our platform ("Customer", "you").
           </p>
           <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-4 text-neutral-900 font-medium text-sm md:text-base">
             BY ACCESSING OR USING THE SERVICE, YOU AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE, DO NOT ACCESS OR USE THE SERVICE.
@@ -100,7 +100,7 @@ export const TermsOfService: React.FC<LegalPageProps> = ({ onNavigate }) => {
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-neutral-900 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-neutral-900 font-semibold">Merchant of Record:</strong> All order fulfillment, payment processing, sales tax, VAT calculation, and invoicing are handled directly by Paddle.com Market Limited ("Paddle"), our authorized Merchant of Record. By placing an order, you agree to Paddle's Terms of Use and Privacy Policy.
+                  <strong className="text-neutral-900 font-semibold">Payments:</strong> Payments are processed by a third-party, PCI-compliant payment provider. By placing an order, you also agree to that provider's terms of use and privacy policy.
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -129,10 +129,10 @@ export const TermsOfService: React.FC<LegalPageProps> = ({ onNavigate }) => {
                 <strong className="text-neutral-900 font-semibold">Zero Revenue Share:</strong> You retain 100% of all margin, recovered revenues, and unbilled invoices generated through the insights provided by the Service. We charge no commission or success fees.
               </li>
               <li>
-                <strong className="text-neutral-900 font-semibold">Performance SLA:</strong> If during your initial 30-day proof-of-concept period the Service fails to identify at least $2,000 USD in unbilled scope creep or margin risk leaks, your second month of Service access will be granted free of charge until $2,000 USD in total leaks are identified.
+                <strong className="text-neutral-900 font-semibold">Performance SLA:</strong> If during the initial 14-day pilot the Service fails to identify at least $1,000 USD in unbilled out-of-scope work on the account included in the pilot, no fee is charged for the pilot.
               </li>
               <li>
-                <strong className="text-neutral-900 font-semibold">No Cash Refunds:</strong> Subscriptions and fees paid are non-refundable once processed by Paddle. The Performance SLA is strictly fulfilled via service time extensions (free access months) and does not constitute a cash refund.
+                <strong className="text-neutral-900 font-semibold">No Cash Refunds:</strong> Subscription fees paid after the pilot are non-refundable for the billing period already started. You can cancel at any time before the next period.
               </li>
             </ul>
           </section>

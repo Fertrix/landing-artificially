@@ -70,7 +70,7 @@ export const PrivacyPolicy: React.FC<LegalPageProps> = ({ onNavigate }) => {
           className="prose prose-neutral max-w-none text-neutral-700 leading-relaxed text-base md:text-lg mb-12"
         >
           <p>
-            Artificially Hub Inc. ("Artificially Hub", "Company", "we", "us", or "our") respects your privacy and is committed to protecting the operational and personal data processed through our infrastructure. This Privacy Policy explains how we collect, process, and protect data when you use our automated revenue recovery and margin analytics platform (the "Service").
+            Artificially Hub ("Artificially Hub", "Company", "we", "us", or "our") respects your privacy and is committed to protecting the operational and personal data processed through our infrastructure. This Privacy Policy explains how we collect, process, and protect data when you use our automated revenue recovery and margin analytics platform (the "Service").
           </p>
         </motion.div>
 
@@ -141,7 +141,7 @@ export const PrivacyPolicy: React.FC<LegalPageProps> = ({ onNavigate }) => {
             </p>
             <ol className="space-y-3 text-sm md:text-base text-neutral-600 list-decimal pl-5">
               <li>
-                <strong className="text-neutral-900 font-semibold">Account & Billing Data:</strong> Name, business email address, agency domain, and corporate metadata. Billing information (credit cards, tax IDs) is collected and processed exclusively by our Merchant of Record, Paddle, and is never stored on our servers.
+                <strong className="text-neutral-900 font-semibold">Account & Billing Data:</strong> Name, business email address, agency domain, and corporate metadata. Billing information (credit cards, tax IDs) is collected and processed exclusively by our payment provider and is never stored on our servers.
               </li>
               <li>
                 <strong className="text-neutral-900 font-semibold">System Metadata & Analytics Ledger:</strong> Calculated financial metrics, hourly cost rates, contract scope rules, scope creep incident logs, and aggregated account health scores.
@@ -180,8 +180,8 @@ export const PrivacyPolicy: React.FC<LegalPageProps> = ({ onNavigate }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white border border-neutral-200 p-4 rounded-xl">
-                <strong className="text-neutral-900 block mb-1">Paddle</strong>
-                <p className="text-xs text-neutral-500">Merchant of Record handling payment processing, tax compliance, and billing.</p>
+                <strong className="text-neutral-900 block mb-1">AI model provider</strong>
+                <p className="text-xs text-neutral-500">Processes text you choose to submit to the optional thread analyzer. Emails, links, phone numbers and @mentions are stripped in your browser first; we do not store the content.</p>
               </div>
               <div className="bg-white border border-neutral-200 p-4 rounded-xl">
                 <strong className="text-neutral-900 block mb-1">Supabase</strong>

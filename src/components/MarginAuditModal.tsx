@@ -135,6 +135,7 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          source: 'pilot-request',
           email: cleanEmail,
           agencySize: agencySize,
           submittedAt: new Date().toISOString(),
@@ -194,10 +195,10 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
               /* Screen 1: Application Form */
               <div className="flex flex-col">
                 <h3 className="font-display font-semibold text-2xl text-white tracking-tight mb-2">
-                  Margin Audit Application
+                  Start a 14-day pilot
                 </h3>
                 <p className="text-sm text-neutral-400 font-medium leading-relaxed mb-6">
-                  Selectively approved for agencies running active retainers.
+                  One client account. If we don’t find $1,000+ in unbilled work, you pay nothing.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -271,7 +272,7 @@ export const MarginAuditModal: React.FC<MarginAuditModalProps> = ({ isOpen, onCl
                       </>
                     ) : (
                       <>
-                        <span>Submit Application</span>
+                        <span>Request my pilot</span>
                         <ArrowRight className="w-4 h-4 text-neutral-950" />
                       </>
                     )}

@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <span className="hidden sm:inline text-neutral-300">|</span>
 
           <p className="text-xs md:text-sm text-neutral-400 font-medium">
-            © 2026 Artificially Hub Inc. All rights reserved.
+            © 2026 Artificially Hub. All rights reserved.
           </p>
         </div>
 

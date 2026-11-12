@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/scope-check", "destination": "/scope-check.html" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
